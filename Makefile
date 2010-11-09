@@ -1,12 +1,14 @@
-SRCS = $(wildcard *.c)
-PROGS = $(patsubst %.c,%,$(SRCS))
+SRCS = $(wildcard src/*.c)
+PROGS = $(patsubst src/%.c,%,$(SRCS))
 
 CFLAGS += -g -Wall -O0
+VPATH = src/
 
 all: $(PROGS)
 
-%: %.c
-	$(CC) $(CFLAGS)  -o $@ $<
+%: src/%.c
+	$(CC) $(CFLAGS) $< -o bin/$@
 
 clean:
-	rm -f *.o *.save $(PROGS)
+	rm -f bin/* src/*.save
+	
