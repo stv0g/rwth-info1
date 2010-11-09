@@ -1,0 +1,9 @@
+This directory contains builds of the following type:
+
+- ELF 64-bit LSB executable
+- x86-64
+- statically linked
+- for GNU/Linux 2.6.15
+- not stripped
+- not optimized
+- debugging enabled (use GDB)

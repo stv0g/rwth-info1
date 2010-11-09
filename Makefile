@@ -1,7 +1,7 @@
 SRCS = $(wildcard src/*.c)
 PROGS = $(patsubst src/%.c,%,$(SRCS))
 
-CFLAGS += -g -Wall -O0
+CFLAGS += -g -Wall -O0 -ansi -static
 VPATH = src/
 
 all: $(PROGS)
