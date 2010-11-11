@@ -17,7 +17,7 @@ int main() {
 	int count, offset;
 
 	for (offset = 0, count = 0; offset < MAX_ACCOUNTS; offset++, count++) {
-		printf("Should this user be activated? (0/1/-1): ");  // -1 for break input
+		printf("Should this user be activated? (0/1/-1): ");  /* -1 for break input */
 		fgets(input_buffer, BUFFER_SIZE, stdin);
 		users[offset].active = atoi(input_buffer);
 		if (users[offset].active == -1) {
