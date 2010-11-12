@@ -1,27 +1,30 @@
 #include <stdio.h>
 
-#define DIMENSION 4
+#define ROWS 4
+#define COLS ROWS
 
 int main() {
-	int matrix[DIMENSION][DIMENSION] = {
+	int matrix[ROWS][COLS] = {
 		{1,  2,  3,  4},
 		{5,  6,  7,  8},
 		{9,  10, 11, 12},
 		{13, 14, 15, 16}
 	};
 
-	int temp, x, y;
+	int x, y;
 
-	for (x = 0; x < DIMENSION; x++) {
+	/* transpose */
+	for (x = 0; x < ROWS; x++) {
 		for (y = 0; y < x; y++) {
-			temp = matrix[x][y];
+			int temp = matrix[x][y];
 			matrix[x][y] = matrix[y][x];
 			matrix[y][x] = temp;
 		}
 	}
 
-	for (x = 0; x < DIMENSION; x++) {
-		for (y = 0; y < DIMENSION; y++) {
+	/* output */
+	for (x = 0; x < ROWS; x++) {
+		for (y = 0; y < COLS; y++) {
 			printf("%d\t", matrix[x][y]);
 		}
 		printf("\n");

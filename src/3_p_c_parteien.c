@@ -10,6 +10,7 @@ typedef struct {
 } party;
 
 int main() {
+	/* data */
 	party parties[] = {
 		{"MFG", 40.3},
 		{"Mitte", 55.0},
@@ -32,5 +33,4 @@ int main() {
 	}
 
 	return 0;
-
 }
