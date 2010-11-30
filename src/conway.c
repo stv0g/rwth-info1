@@ -1,6 +1,7 @@
 /**
  * C implementation of Conway's Game of Life
  *
+ * Grundlagen Informatik 1, 30.11.2010, RWTH Aachen
  * based on libncurses
  *
  * @author Steffen Vogel <info@steffenvogel.de>
