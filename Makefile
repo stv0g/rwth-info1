@@ -6,6 +6,9 @@ VPATH = src/
 
 all: $(PROGS)
 
+conway: src/conway.c
+	$(CC) $(CFLAGS) -std=gnu99 src/conway.c -o bin/conway -lcurses
+
 %: src/%.c
 	$(CC) $(CFLAGS) $< -o bin/$@
 

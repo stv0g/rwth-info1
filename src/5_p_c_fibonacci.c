@@ -3,6 +3,7 @@
 
 /* declarations */
 int sum(int n);
+int sum2(int n);
 int fib(int n);
 
 int main() {
@@ -10,7 +11,7 @@ int main() {
 
 	printf("Please enter n: ");
 	scanf("%d", &n);
-	printf("fib(%d) = %d\nsum(%d) = %d\n", n, fib(n), n, sum(n));
+	printf("fib(%d) = %d\nsum(%d) = %d\n", n, fib(n), n, sum2(n));
 
 	return 0;
 }
@@ -25,19 +26,11 @@ int sum(int n) {
 	return sum;
 }
 
+int sum2(int n) {
+	return (n > 1) ? sum2(n-1) + n : 1;
+}
+
 int fib(int n) {
-	if (n >= 2) {
-		return fib(n-1) + fib(n-1);
-	}
-	else if (n == 1) {
-		return 1;
-	}
-	else if (n == 0) {
-		return 0;
-	}
-	else {
-		fprintf(stderr, "Invalid parameter: %d", n);
-		exit(-1);
-	}
+	return (n < 2) ? n : fib(n-1) + fib(n-2);
 }
 
