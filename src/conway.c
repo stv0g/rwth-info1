@@ -78,16 +78,6 @@ uint8_t ** create_world(uint8_t width, uint8_t height) {
 	return world;
 }
 
-/* free memory for world */
-void destroy_world(uint8_t ** world, uint8_t width) {
-	uint8_t a;
-
-	for (a = 0; a < width; a++) {
-		free(world[a]);
-	}
-	free(world);
-}
-
 /* insert pattern at (x|y) into world */
 void inhabit_world(struct pattern pattern, uint8_t x, uint8_t y, uint8_t ** world) {
 	uint8_t a, b;
@@ -236,14 +226,14 @@ int main(int argc, char * argv[]) {
 	struct cursor cur = {0, 0};
 
 	int generation = 0, input, framerate = 17;
-	uint8_t width, height, paused = 0;
+	uint8_t width, height, paused = 0, a, b;
+	uint8_t ** worlds[2], ** world;
 
 	/* initialize world */
 	getmaxyx(win, height, width);
-	uint8_t ** worlds[2] = {
-		create_world(width, height), /* current generation */
-		create_world(width, height)  /* next generation */
-	}, ** world = worlds[0];
+	for (a = 0; a < 2; a++)
+		worlds[a] = create_world(width, height); /* current generation */
+	world = worlds[0];
 	inhabit_world(patterns[3], width/2, height/2, worlds[0]);
 
 	/* simulation loop */
@@ -336,8 +326,12 @@ int main(int argc, char * argv[]) {
 	}
 
 	/* householding */
-	destroy_world(worlds[0], width);
-	destroy_world(worlds[1], width);
+	for (a = 0; a < 2; a++) {
+		for (b = 0; b < width; b++) {
+			free(worlds[a][b]);
+		}
+		free(worlds[a]);
+	}
 
 	endwin(); /* exit ncurses mode */
 
